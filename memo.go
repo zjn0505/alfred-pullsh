@@ -6,7 +6,7 @@ import (
 )
 
 // CreateItem - Create Workflow Item from Memo
-func CreateItem(memo Memo) {
+func createItem(memo Memo) {
 	title := memo.ID
 	subtitle := memo.Msg
 	wf.NewItem(title).
@@ -21,7 +21,7 @@ func CreateItem(memo Memo) {
 }
 
 // ParseResponse - parse response of api into Resp
-func ParseResponse(jsonString string) Resp {
+func parseResponse(jsonString string) Resp {
 	var result Resp
 
 	err := json.Unmarshal([]byte(jsonString), &result)

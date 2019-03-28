@@ -14,7 +14,7 @@ const (
 )
 
 // PullMemo - pull memo by memoId from API
-func PullMemo(memoID string) Resp {
+func pullMemo(memoID string) Resp {
 	url := fmt.Sprintf(urlPull, memoID)
 	log.Println(url)
 	resp, err := http.Get(url)
@@ -29,11 +29,11 @@ func PullMemo(memoID string) Resp {
 		log.Panic("Error", err)
 	}
 
-	return ParseResponse(string(body))
+	return parseResponse(string(body))
 }
 
 // PushMemo - push memo to API
-func PushMemo(content string) Resp {
+func pushMemo(content string) Resp {
 
 	resp, err := http.PostForm(urlPush, url.Values{"msg": {query}})
 	if err != nil {
@@ -47,5 +47,5 @@ func PushMemo(content string) Resp {
 		log.Panic("Error", err)
 	}
 
-	return ParseResponse(string(body))
+	return parseResponse(string(body))
 }

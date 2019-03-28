@@ -40,16 +40,16 @@ func run() {
 		// Pull
 		if query != "" && len(query) >= 4 && len(query) <= 5 {
 
-			data := PullMemo(query).Memo
+			data := pullMemo(query).Memo
 
-			CreateItem(data)
+			createItem(data)
 			wf.SendFeedback()
 		}
 	} else {
 		// Push
 		if query != "" && len(query) >= 1 {
 
-			data := PushMemo(query)
+			data := pushMemo(query)
 			av := aw.NewArgVars()
 			av.Arg(data.Memo.ID)
 			av.Var("memoId", data.Memo.ID).
